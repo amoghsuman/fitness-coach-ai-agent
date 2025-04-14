@@ -9,8 +9,6 @@ This is an AI-powered personal health assistant that creates **fully personalize
 
 Built using [Agno](https://github.com/agno-agi/agno), [Google Gemini](https://ai.google.dev/), and deployed with [Streamlit](https://streamlit.io/).
 
----
-
 ## Features
 
 1. Personalized Fitness Plan  
@@ -20,13 +18,10 @@ Built using [Agno](https://github.com/agno-agi/agno), [Google Gemini](https://ai
 5. Stylish and responsive UI  
 6. Gemini-powered smart agent planning
 
----
-
 ##  Demo
 
 > Live Streamlit Demo Link: https://fitness-coach-ai-agent.streamlit.app/ 
 
----
 
 ## Tech Stack
 
@@ -34,8 +29,6 @@ Built using [Agno](https://github.com/agno-agi/agno), [Google Gemini](https://ai
 - **UI**: Streamlit
 - **AI Agent Framework**: [Agno](https://github.com/agno-agi/agno)
 - **LLM Model**: Google Gemini (via `google-generativeai`)
-
----
 
 ## Secure Your API Key
 
