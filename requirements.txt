@@ -1,6 +1,7 @@
 streamlit
 agno
 openai
+google-generativeai
 duckduckgo-search
 yfinance
 lancedb
