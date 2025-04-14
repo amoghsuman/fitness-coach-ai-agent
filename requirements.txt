@@ -1,0 +1,13 @@
+streamlit
+agno
+openai
+duckduckgo-search
+yfinance
+lancedb
+tantivy
+pypdf
+requests
+exa-py
+newspaper4k
+lxml_html_clean
+sqlalchemy
