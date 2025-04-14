@@ -1,5 +1,6 @@
 streamlit
 agno
+google-genai
 google-generativeai
 duckduckgo-search
 yfinance
