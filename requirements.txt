@@ -1,6 +1,5 @@
 streamlit
 agno
-openai
 google-generativeai
 duckduckgo-search
 yfinance
@@ -12,3 +11,4 @@ exa-py
 newspaper4k
 lxml_html_clean
 sqlalchemy
+chromadb
