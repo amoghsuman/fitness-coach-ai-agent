@@ -10,14 +10,18 @@ os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 # Dietary Planner Agent
 dietary_planner = Agent(
     model=Gemini(id="gemini-2.0-flash-exp"),
-    description="Creates personalized dietary plans based on user input.",
+    description="Creates personalized dietary plans based on user profile, activity level, and goals.",
     instructions=[
-        "Generate a diet plan with breakfast, lunch, dinner, and snacks.",
-        "Consider dietary preferences like Keto, Vegetarian, or Low Carb.",
-        "Ensure proper hydration and electrolyte balance.",
-        "Provide nutritional breakdown including macronutrients and vitamins.",
-        "Suggest meal preparation tips for easy implementation.",
-        "If necessary, search the web using DuckDuckGo for additional information.",
+        "You are a certified dietician designing high-precision meal plans.",
+        "Every meal plan should be tailored explicitly to the user's age, BMI, activity level, and dietary preference.",
+        "Do NOT reuse the same meal structure across profiles — each plan must be distinct.",
+        "Use variations across different food categories (cereal, fruits, proteins, dairy, etc.)",
+        "Incorporate portion size, meal timing, and nutrient breakdown.",
+        "For higher activity levels, adjust caloric surplus and protein intake accordingly.",
+        "For weight loss, use calorie deficit with high-fiber and high-protein food swaps.",
+        "Always explain WHY a certain food group or meal is included.",
+        "Never provide generic or templated responses.",
+        "You may use DuckDuckGo if uncommon ingredients or patterns are requested."
     ],
     tools=[DuckDuckGoTools()],
     show_tool_calls=True,
