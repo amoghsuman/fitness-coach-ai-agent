@@ -25,10 +25,30 @@ dietary_planner = Agent(
 )
 
 # Function to get a personalized meal plan
+#def get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal):
+#   prompt = (f"Create a personalized meal plan for a {age}-year-old person, weighing {weight}kg, "
+#              f"{height}cm tall, with an activity level of '{activity_level}', following a "
+#              f"'{dietary_preference}' diet, aiming to achieve '{fitness_goal}'.")
+#    return dietary_planner.run(prompt)
+
 def get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal):
-    prompt = (f"Create a personalized meal plan for a {age}-year-old person, weighing {weight}kg, "
-              f"{height}cm tall, with an activity level of '{activity_level}', following a "
-              f"'{dietary_preference}' diet, aiming to achieve '{fitness_goal}'.")
+    bmi = round(weight / ((height / 100) ** 2), 2)
+    
+    prompt = (
+        f"You are a certified nutritionist.\n\n"
+        f"Create a **fully personalized daily meal plan** (breakfast, lunch, dinner, snacks) for the following profile:\n\n"
+        f"- Age: {age} years\n"
+        f"- Weight: {weight} kg\n"
+        f"- Height: {height} cm\n"
+        f"- BMI: {bmi} (categorize it)\n"
+        f"- Activity Level: {activity_level}\n"
+        f"- Dietary Preference: {dietary_preference}\n"
+        f"- Fitness Goal: {fitness_goal}\n\n"
+        f"👉 Ensure the meal plan is *distinct* and specific to this profile. Add portion sizes, timings, and clear variations in food items compared to generic templates.\n"
+        f"👉 Include a short macro breakdown (carbs, proteins, fats).\n"
+        f"👉 Mention if the meal plan suits a calorie deficit, surplus, or maintenance strategy."
+    )
+    
     return dietary_planner.run(prompt)
 
 # Fitness Trainer Agent
