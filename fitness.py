@@ -35,25 +35,29 @@ dietary_planner = Agent(
 #              f"'{dietary_preference}' diet, aiming to achieve '{fitness_goal}'.")
 #    return dietary_planner.run(prompt)
 
-def get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal):
+def get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal, gender, cuisine_preference, allergies):
     bmi = round(weight / ((height / 100) ** 2), 2)
     
     prompt = (
         f"You are a certified nutritionist.\n\n"
-        f"Create a **fully personalized daily meal plan** (breakfast, lunch, dinner, snacks) for the following profile:\n\n"
+        f"Create a daily meal plan (breakfast, lunch, dinner, snacks) tailored to the following profile:\n\n"
         f"- Age: {age} years\n"
+        f"- Gender: {gender}\n"
         f"- Weight: {weight} kg\n"
         f"- Height: {height} cm\n"
         f"- BMI: {bmi} (categorize it)\n"
         f"- Activity Level: {activity_level}\n"
         f"- Dietary Preference: {dietary_preference}\n"
+        f"- Cuisine Preference: {cuisine_preference}\n"
+        f"- Allergies/Restrictions: {allergies}\n"
         f"- Fitness Goal: {fitness_goal}\n\n"
-        f"👉 Ensure the meal plan is *distinct* and specific to this profile. Add portion sizes, timings, and clear variations in food items compared to generic templates.\n"
-        f"👉 Include a short macro breakdown (carbs, proteins, fats).\n"
-        f"👉 Mention if the meal plan suits a calorie deficit, surplus, or maintenance strategy."
+        f"👉 Make the plan specific and distinct. Avoid generic recommendations.\n"
+        f"👉 Include nutrient breakdown, meal timing, and substitution tips.\n"
+        f"👉 Ensure alignment with the goal (caloric deficit/surplus/maintenance).\n"
     )
     
     return dietary_planner.run(prompt)
+
 
 # Fitness Trainer Agent
 fitness_trainer = Agent(
@@ -94,7 +98,7 @@ team_lead = Agent(
 
 # Function to get a full health plan
 def get_full_health_plan(name, age, weight, height, activity_level, dietary_preference, fitness_goal):
-    meal_plan = get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal)
+    meal_plan = get_meal_plan(age, weight, height, activity_level, dietary_preference, fitness_goal, gender, cuisine_preference, allergies)
     fitness_plan = get_fitness_plan(age, weight, height, activity_level, fitness_goal)
     
     return team_lead.run(
@@ -170,6 +174,10 @@ height = st.sidebar.number_input("Height (in cm)", min_value=100, max_value=250,
 activity_level = st.sidebar.selectbox("Activity Level", ["Low", "Moderate", "High"])
 dietary_preference = st.sidebar.selectbox("Dietary Preference", ["Keto", "Vegetarian", "Low Carb", "Balanced"])
 fitness_goal = st.sidebar.selectbox("Fitness Goal", ["Weight Loss", "Muscle Gain", "Endurance", "Flexibility"])
+gender = st.sidebar.selectbox("Gender", ["Male", "Female", "Other"])
+cuisine_preference = st.sidebar.selectbox("Cuisine Preference", ["Indian", "Mediterranean", "Continental", "Asian", "No Preference"])
+allergies = st.sidebar.text_input("Any allergies or food restrictions?", "None")
+
 
 # Divider for aesthetics
 st.markdown("---")
